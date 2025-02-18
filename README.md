@@ -1,4 +1,4 @@
-# Speech-to-Text Live Overlay
+# Offline Closed Captions
 
 ## Overview
 
