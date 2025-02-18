@@ -14,12 +14,28 @@ This project is an **offline speech-to-text (STT) system** that takes live micro
 - **Supports multiple input sources** (USB mic, line-in, etc.)
 - **Customizable text overlay**
 
+## Key Points
+- Offline STT with GPU Acceleration:
+The program uses the faster‑whisper engine with device="cuda" so that transcription is accelerated (Tested with NVidia GeForce RTX 2080 SUPER).
+
+- Real‑Time Audio Input:
+PyAudio is used to capture live audio from the USB condenser mic (which must be the system’s default audio input).
+
+- Noise Filtering:
+A simple noise reduction is applied via the noisereduce library. In production you may wish to tweak the parameters or integrate a more sophisticated noise suppression algorithm.
+
+- Live OBS Text File:
+The transcription is written to H:/faster-whisper/live.txt. OBS Studio can be configured to use this file as a Text (GDI+) source with a green background, black text, and padding as required. Make sure OBS refreshes the file at a high frequency (below 100 ms delay).
+
+- Deployment Considerations:
+The program is intended to run offline on Windows based sytems with Python 3.11.7. Ensure all dependencies (PyAudio, NumPy, noisereduce, and faster-whisper) are installed in your offline environment.
+
 ## Installation
 
 1. **Clone the Repository**
    ```sh
-   git clone https://github.com/yourusername/speech-to-text-overlay.git
-   cd speech-to-text-overlay
+   git clone https://github.com/kdessinger/offline-cc.git
+   cd offline0-cc
    ```
 2. **Install Dependencies** (Ensure Python 3.11.7 is installed)
    ```sh
